@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private static int numWins  = 0;
-    private static int numPlays = 0;
+    public static int numWins  = 0;
+    public static int numPlays = 0;
     /**
      * - Restart game at any time option.
      * - Exit game at any time option.
