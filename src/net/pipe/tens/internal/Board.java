@@ -42,7 +42,7 @@ public abstract class Board {
     }
 
     public int deckSize() {
-        return deck.size();
+        return deck.getSize();
     }
 
     public Card cardAt(int k) {

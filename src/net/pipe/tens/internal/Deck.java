@@ -20,7 +20,7 @@ public class Deck {
     }
     public boolean isEmpty() { return size==0; }
 
-    public int size() { return size; }
+    public int getSize() { return size; }
 
     public void shuffle() {
         for (int k = cards.size() - 1; k > 0; k--) {
