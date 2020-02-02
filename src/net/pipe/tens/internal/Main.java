@@ -11,7 +11,6 @@ public class Main extends Application {
     public static int numPlays = 0;
     /**
      * - Restart game at any time option.
-     * - Exit game at any time option.
      * - 10s, Jacks, Queens and Kings can only be eliminated if you have all 4 on the board.
      * - Tracks your wins and total games played and always displays both.
      */

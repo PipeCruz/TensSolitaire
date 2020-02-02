@@ -2,7 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pipe.tens.controllers.Controller">
    <children>
       <GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true" layoutX="42.0" layoutY="32.0" prefHeight="333.0" prefWidth="430.0">
@@ -22,6 +26,6 @@
       <Label layoutX="540.0" layoutY="47.0" prefHeight="17.0" prefWidth="80.0" text="Total:" />
       <Label layoutX="540.0" layoutY="88.0" prefHeight="17.0" prefWidth="80.0" text="Wins:" />
       <Button layoutX="577.0" layoutY="186.0" mnemonicParsing="false" onAction="#replace" prefHeight="25.0" prefWidth="80.0" text="REPLACE" />
-      <Button layoutX="577.0" layoutY="234.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="RESTART" />
+      <Button layoutX="577.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#restart" prefHeight="25.0" prefWidth="80.0" text="RESTART" />
    </children>
 </AnchorPane>
