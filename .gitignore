@@ -1,3 +1,3 @@
 # Project exclude paths
 /out/
-/files/
+/src/net/pipe/tens/files/cards/
