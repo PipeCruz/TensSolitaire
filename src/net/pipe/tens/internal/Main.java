@@ -17,6 +17,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 750, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
+        primaryStage.show();//fixme below
         primaryStage.getIcons().add(new Image("/net/pipe/tens/files/css/icon.png"));
         primaryStage.setOnCloseRequest(e -> {
             Platform.exit();
