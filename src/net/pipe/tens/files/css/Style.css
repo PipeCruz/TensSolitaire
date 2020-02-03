@@ -1,0 +1,23 @@
+.root {
+    -fx-background-image: url("backdrop.jpg");
+    -fx-text-fill: black;
+}
+.button {
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: black;
+    -fx-border-radius: 5;
+    -fx-border-width: 1.2 1.2 1.2 1.2;
+    -fx-background-color: dimgrey;
+    -fx-border-color: transparent;
+}
+.button:hover {
+    -fx-border-width: 2 2 2 2;
+    -fx-font-size: 16px;
+    -fx-background-color: dimgrey;
+
+}
+.label{
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+}
