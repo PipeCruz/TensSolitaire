@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class Deck {
 
-    private ArrayList<Card> cards;
+    //instance vars
+    private final ArrayList<Card> cards;
     private int size;
 
+    //contains a deck of cards
     public Deck(String[] ranks, String[] suits, int[] values) {
         cards = new ArrayList<>();
         for (int j = 0; j < ranks.length; j++) {
@@ -22,6 +24,7 @@ public class Deck {
 
     public int getSize() { return size; }
 
+    //shuffles the deck
     public void shuffle() {
         for (int k = cards.size() - 1; k > 0; k--) {
             int howMany = k + 1;
@@ -34,6 +37,7 @@ public class Deck {
         size = cards.size();
     }
 
+    //deals a card
     public Card deal() {
         if (isEmpty())
             return null;
@@ -41,6 +45,7 @@ public class Deck {
         return cards.get(size);
     }
 
+    //for debug
     @Override
     public String toString() {
         StringBuilder rtn = new StringBuilder("size = " + size + "\nUndealt cards: \n");
