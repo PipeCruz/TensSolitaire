@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pipe.tens.controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="750.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pipe.tens.controllers.Controller">
    <children>
-      <GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true" layoutX="42.0" layoutY="32.0" prefHeight="333.0" prefWidth="430.0">
+      <GridPane fx:id="grid" alignment="CENTER" layoutX="42.0" layoutY="32.0" prefHeight="333.0" prefWidth="430.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,9 +23,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label layoutX="540.0" layoutY="47.0" prefHeight="17.0" prefWidth="80.0" text="Total:" />
-      <Label layoutX="540.0" layoutY="88.0" prefHeight="17.0" prefWidth="80.0" text="Wins:" />
-      <Button layoutX="577.0" layoutY="186.0" mnemonicParsing="false" onAction="#replace" prefHeight="25.0" prefWidth="80.0" text="REPLACE" />
-      <Button layoutX="577.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#restart" prefHeight="25.0" prefWidth="80.0" text="RESTART" />
+      <Label fx:id="totalG" layoutX="494.0" layoutY="18.0" prefHeight="29.0" prefWidth="223.0" text="Total Games:" />
+      <Label fx:id="Wins" layoutX="494.0" layoutY="47.0" prefHeight="29.0" prefWidth="223.0" text="Wins:" />
+      <Button layoutX="556.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#replace" prefHeight="28.0" prefWidth="99.0" text="REPLACE" />
+      <Button layoutX="556.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#restart" prefHeight="28.0" prefWidth="99.0" text="RESTART" />
+      <Button layoutX="556.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#help" prefHeight="28.0" prefWidth="99.0" text="HELP" />
+      <Button layoutX="556.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="28.0" prefWidth="99.0" text="EXIT" />
+      <Label fx:id="undealt" layoutX="494.0" layoutY="76.0" prefHeight="29.0" prefWidth="223.0" text="Cards Left: 39" />
    </children>
 </AnchorPane>

@@ -1,43 +1,44 @@
 package net.pipe.tens.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import net.pipe.tens.internal.Card;
 import net.pipe.tens.internal.Deck;
-import net.pipe.tens.internal.Main;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Controller {
+
 
     private Deck deck;
     private Card[][] cards;
     private ArrayList<Card> picked;
-
-
+    int[] POINT_VALUES = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0};
+    String[] SUITS = {"spades", "hearts", "diamonds", "clubs"};
+    String[] RANKS = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
     public Controller(){
-        cards = new Card[3][5];
-        int[] POINT_VALUES = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0};
-        String[] SUITS = {"spades", "hearts", "diamonds", "clubs"};
-        String[] RANKS = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+        this.cards = new Card[3][5];
+
         deck = new Deck(RANKS, SUITS, POINT_VALUES);
-//        for(int i = 0; i < 39; i++)deck.deal();//todo temporary
+        for(int i = 0; i < 39; i++)deck.deal();//todo temporary
         picked = new ArrayList<>(13);
     }
-    @FXML
-    private GridPane grid;
 
     @FXML
+    private GridPane grid;
+    @FXML
     private void initialize() {
-        addImgsToGrid();
+        addImagesToGrid();
         System.out.println(anotherPlayIsPossible());
-//        if(!anotherPlayIsPossible()){
-//            Stage stage = (Stage) grid.getScene().getWindow();
-//        }
+        if(!anotherPlayIsPossible()){
+            restart(false);
+        }
     }
 
     private void select(MouseEvent e) {
@@ -61,7 +62,7 @@ public class Controller {
 
 
     @FXML
-    private void replace(ActionEvent event) {//this is where the checking takes place
+    private void replace() {//this is where the checking takes place
         if(picked.size()==2){
             Card one = picked.get(0),
                     two = picked.get(1);
@@ -120,6 +121,8 @@ public class Controller {
         System.out.println("arraylist size " + picked.size());
     }
 
+    @FXML private Label totalG,Wins,undealt;
+
     private void update() {
         for(Card[] c : cards){
             for(Card ca : c){
@@ -139,10 +142,7 @@ public class Controller {
                 }
             }
         }
-    }
-
-    private void displayEndMessage() {
-        System.out.println("end of gameth");
+        undealt.setText("Cards left: " + deck.getSize());
     }
 
     private boolean anotherPlayIsPossible(){
@@ -196,20 +196,25 @@ public class Controller {
                 && four.rank().equals(rank));
     }
 
-
-    public void restart(MouseEvent event) {
-        for(Card[] c : cards){
-            for(Card ca : c){
-                if(ca!=null){
+    int tot = 0;
+    public void restart(boolean b) {
+        if(b) totalG.setText("Total Games: " + ++tot);
+        for(Card[] c : cards)
+            for(Card ca : c)
+                try{
                     grid.getChildren().remove(ca.getImage());
+                }catch (Exception ignored){
+
                 }
-            }
+        deck = new Deck(RANKS,SUITS,POINT_VALUES);
+        addImagesToGrid();
+        if(!anotherPlayIsPossible()){
+            System.out.println("resetting");
+            restart(false);
         }
-        deck.shuffle();
-        addImgsToGrid();
     }
 
-    private void addImgsToGrid() {
+    private void addImagesToGrid() throws IllegalArgumentException {
         for(int r = 0; r < cards.length;r++){
             for(int c = 0; c < cards[r].length; c++){
                 if(!(r == 2 && (c==0 || c==4))){
@@ -220,6 +225,31 @@ public class Controller {
                 }
             }
         }
+    }
+
+    public void help(MouseEvent event) {//fixme
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Help");
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("net/pipe/tens/files/css/icon.png"));
+        alert.setHeaderText(null);
+        alert.setContentText("Welcome to Tens!\n" +
+                "To play this solitaire type game you must\n" +
+                "--Select a pair of cards that add up to 10\n" +
+                "or\n" +
+                "--Select 4 face cards of the same rank, 10s included\n" +
+                "-Select the \"REPLACE\" button");
+        alert.showAndWait();
+    }
+
+    public void exit(MouseEvent event) {
+        Node n = (Node)event.getSource();
+        Stage s = (Stage) n.getParent().getScene().getWindow();
+        s.close();
+    }
+
+    @FXML private void restart() {
+        restart(true);
     }
 
 }
